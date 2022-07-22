@@ -8,6 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+
+/**
+ * Rq 클래스 역할
+ * 1. HttpServelet의 Request, Response를 처리한다.
+ */
 public class Rq {
     private final HttpServletRequest req;
     private final HttpServletResponse resp;
@@ -54,6 +59,7 @@ public class Rq {
     public void view(String path) {
 
         System.out.println("path: " + path);
+
         // gugudan2.jsp 에게 나머지 작업을 토스
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/jsp/" + path + ".jsp");
         try {

@@ -6,6 +6,11 @@ import com.ll.exam.dto.ArticleDto;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ArticleController class 역할
+ * 1. 게시물 리스트를 보여준다.
+ */
+
 public class ArticleController {
 
 
