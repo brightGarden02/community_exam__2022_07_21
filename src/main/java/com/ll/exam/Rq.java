@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public class Rq {
-
     private final HttpServletRequest req;
     private final HttpServletResponse resp;
 
@@ -22,29 +21,28 @@ public class Rq {
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
         }
-
         resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("test/html; charset=utf-8");
+        resp.setContentType("text/html; charset=utf-8");
     }
 
-    public int getIntParam(String paramName, int defautValue) {
+    public int getIntParam(String paramName, int defaultValue) {
         String value = req.getParameter(paramName);
 
-        if(value == null) {
-            return defautValue;
+        if (value == null) {
+            return defaultValue;
         }
 
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            return defautValue;
+            return defaultValue;
         }
     }
 
     public void appendBody(String str) {
         try {
             resp.getWriter().append(str);
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -55,9 +53,9 @@ public class Rq {
 
     public void view(String path) {
 
-        // gugudan2.jsp에게 나머지 작업을 토스
+        System.out.println("path: " + path);
+        // gugudan2.jsp 에게 나머지 작업을 토스
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/jsp/" + path + ".jsp");
-
         try {
             requestDispatcher.forward(req, resp);
         } catch (ServletException e) {
@@ -65,7 +63,5 @@ public class Rq {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
-
 }

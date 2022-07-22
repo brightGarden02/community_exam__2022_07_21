@@ -2,6 +2,7 @@ package com.ll.exam;
 
 
 import com.ll.exam.article.ArticleController;
+import com.ll.exam.member.MemberController;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,13 +11,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("usr/*")
+/**
+ * usr에 대한 내용은 다 모이게함
+ */
+@WebServlet("/usr/*")
 public class DispatchServlet extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        resp.getWriter().append("Work?");
-
         Rq rq = new Rq(req, resp);
 
         MemberController memberController = new MemberController();
@@ -29,13 +32,15 @@ public class DispatchServlet extends HttpServlet {
          * /usr/article/list/free 부분만 가져온다.
          */
         String url = req.getRequestURI();
+        System.out.println(url);
+
 
         switch (url) {
             case "/usr/article/list/free":
                 articleController.showList(rq);
                 break;
             case "/usr/member/login":
-                memberController.showList(rq);
+                memberController.showLogin(rq);
                 break;
         }
 
