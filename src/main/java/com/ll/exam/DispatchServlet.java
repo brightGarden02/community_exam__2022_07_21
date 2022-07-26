@@ -19,9 +19,8 @@ import java.io.IOException;
 @WebServlet("/usr/*")
 public class DispatchServlet extends HttpServlet {
 
-
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
 //        resp.getWriter().append("is it working?");
 
@@ -36,24 +35,39 @@ public class DispatchServlet extends HttpServlet {
          * Http://localhost:8081/usr/article/list/free?page=1 에서
          * /usr/article/list/free 부분만 가져온다.
          */
-        String url = req.getRequestURI();
-        System.out.println(url);
+//        String url = req.getRequestURI();
+        System.out.println("rq.getMethod():" + rq.getMethod());
 
 
-        switch (url) {
-            case "/usr/article/list/free":
-                articleController.showList(rq);
-                break;
-            case "/usr/article/write/free":
-                articleController.showWrite(rq);
-                break;
-            case "/usr/member/login":
-                memberController.showLogin(rq);
+        switch (rq.getMethod()) {
+            case "GET":
+                switch(rq.getPath()) {
+                    case "/usr/article/list/free":
+                        articleController.showList(rq);
+                        break;
+                    case "/usr/article/write/free":
+                        articleController.showWrite(rq);
+                        break;
+                    case "/usr/member/login":
+                        memberController.showLogin(rq);
+                        break;
+                }
+            case "POST":
+                switch(rq.getPath()) {
+                    case "/usr/article/write/free":
+                        articleController.doWrite(rq);
+                        break;
+                }
                 break;
         }
 
     }
 
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+        doGet(req, resp);
+    }
 
 
 }

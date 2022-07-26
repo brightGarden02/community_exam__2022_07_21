@@ -38,5 +38,13 @@ public class ArticleController {
         rq.view("usr/article/write");
     }
 
+    public void doWrite(Rq rq) {
+        String title = rq.getParam("title", "");
+        String body = rq.getParam("body", "");
+
+        rq.appendBody("<div>title : %s</div>".formatted(title));
+        rq.appendBody("<div>body : %s</div>".formatted(body));
+    }
+
 
 }
