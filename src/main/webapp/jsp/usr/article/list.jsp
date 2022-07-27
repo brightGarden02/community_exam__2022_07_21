@@ -12,6 +12,8 @@ List<ArticleDto> articles = (List<ArticleDto>)request.getAttribute("articles");
 <% for ( ArticleDto article : articles ) { %>
     <li>
         <a href="/usr/article/detail/free/<%=article.getId()%>"><%=article.getId()%>. <%=article.getTitle()%></a>
+        <h3>삭제</h3>
+
     </li>
 
 <% } %>

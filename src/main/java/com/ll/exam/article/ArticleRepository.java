@@ -38,4 +38,13 @@ public class ArticleRepository {
         }
         return null;
     }
+
+    public void delete(long id) {
+
+        ArticleDto articleDto = findById(id);
+
+        if(articleDto == null) return;
+
+        datum.remove(articleDto);
+    }
 }
