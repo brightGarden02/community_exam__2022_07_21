@@ -51,9 +51,7 @@ public class DispatchServlet extends HttpServlet {
                     case "/usr/article/write":
                         articleController.showWrite(rq);
                         break;
-                    case "/usr/article/delete":
-                        articleController.deleteList(rq);
-                        break;
+
                     case "/usr/article/modify":
                         articleController.showModify(rq);
                         break;
@@ -69,6 +67,9 @@ public class DispatchServlet extends HttpServlet {
                         break;
                     case "/usr/article/modify":
                         articleController.doModify(rq);
+                        break;
+                    case "/usr/article/delete":
+                        articleController.deleteList(rq);
                         break;
                 }
                 break;
