@@ -32,11 +32,11 @@ function ArticleSave__submitForm(form) {
             </div>
 
             <div class="flex gap-3">
-                   <span>제목</span>
-                   <div>
-                       <input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." value="${article.title}" />
-                   </div>
-               </div>
+                <span>제목</span>
+                <div>
+                    <input name="title" type="text" maxlength="50" placeholder="제목을 입력해주세요." value="${article.title}" />
+                </div>
+            </div>
 
             <div class="flex gap-3">
                 <span>내용</span>
@@ -51,7 +51,7 @@ function ArticleSave__submitForm(form) {
                 </div>
             </div>
         </form>
-
+    </div>
 </section>
 
 <%@ include file="../common/foot.jspf"%>
