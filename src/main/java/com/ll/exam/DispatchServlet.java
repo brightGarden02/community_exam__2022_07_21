@@ -36,10 +36,10 @@ public class DispatchServlet extends HttpServlet {
          * /usr/article/list/free 부분만 가져온다.
          */
 //        String url = req.getRequestURI();
-        System.out.println("rq.getMethod():" + rq.getMethod());
+        System.out.println("rq.getRouteMethod():" + rq.getRouteMethod());
 
 
-        switch (rq.getMethod()) {
+        switch (rq.getRouteMethod()) {
             case "GET":
                 switch(rq.getActionPath()) {
                     case "/usr/article/detail":
@@ -68,11 +68,14 @@ public class DispatchServlet extends HttpServlet {
                     case "/usr/article/modify":
                         articleController.doModify(rq);
                         break;
+                }
+                break;
+            case "DELETE":
+                switch (rq.getActionPath()) {
                     case "/usr/article/delete":
                         articleController.deleteList(rq);
                         break;
                 }
-                break;
         }
 
     }
